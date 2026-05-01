@@ -1,3 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scroll untuk seluruh halaman */
+html {
+  scroll-behavior: smooth;
+}
+
 @import "tailwindcss";
 
 :root {
