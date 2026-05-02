@@ -23,22 +23,37 @@ export const FAQ = () => {
           <Paragraph className="mt-2">Yang sering ditanyakan klien kami</Paragraph>
         </div>
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, idx) => (
-            <div key={idx} className="bg-white rounded-xl border border-neutral-200 overflow-hidden">
-              <button
-                className="w-full p-5 text-left flex justify-between items-center hover:bg-neutral-50 transition"
-                onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}
-              >
-                <span className="font-semibold text-neutral-800">{faq.q}</span>
-                {activeIndex === idx ? <FaChevronUp className="text-brand-500" /> : <FaChevronDown className="text-neutral-500" />}
-              </button>
-              {activeIndex === idx && (
-                <div className="px-5 pb-5 text-neutral-600 border-t border-neutral-100">
-                  {faq.a}
+          {faqs.map((faq, idx) => {
+            const isActive = activeIndex === idx;
+            return (
+              <div key={idx} className="bg-white rounded-xl border border-neutral-200 overflow-hidden transition-shadow hover:shadow-md">
+                <button
+                  className="w-full p-5 text-left flex justify-between items-center hover:bg-neutral-50 transition-colors duration-200"
+                  onClick={() => setActiveIndex(isActive ? null : idx)}
+                >
+                  <span className="font-semibold text-neutral-800">{faq.q}</span>
+                  {isActive ? (
+                    <FaChevronUp className="text-brand-500 transition-transform duration-200" />
+                  ) : (
+                    <FaChevronDown className="text-neutral-500 transition-transform duration-200" />
+                  )}
+                </button>
+                
+                {/* Animasi smooth untuk jawaban */}
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isActive ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-5 pb-5 text-neutral-600 border-t border-neutral-100">
+                      {faq.a}
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </Container>
     </section>

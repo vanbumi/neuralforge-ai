@@ -4,11 +4,13 @@ import { Container } from '../ui/Container';
 import { Heading } from '../ui/Heading';
 import { Paragraph } from '../ui/Paragraph';
 import { Button } from '../ui/Button';
+import Image from 'next/image';
 
 export const Hero = () => (
   <section className="pt-20 pb-16 bg-gradient-to-br from-neutral-50 to-white">
     <Container>
       <div className="flex flex-col lg:flex-row items-center gap-12">
+        {/* Kolom Kiri - Teks (TIDAK DIUBAH) */}
         <div className="flex-1 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 bg-brand-50 text-brand-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
             <FaIndustry /> AI untuk Pabrik & Manufaktur
@@ -32,10 +34,28 @@ export const Hero = () => (
             <div><span className="text-3xl font-bold text-brand-600">2.3M</span><br /><span className="text-neutral-600">Dokumen diproses</span></div>
           </div>
         </div>
-        <div className="flex-1 bg-gradient-to-br from-brand-100 to-cyan-100 rounded-3xl p-8 text-center">
-          <FaRobot className="text-7xl text-brand-500 mx-auto mb-4" />
-          <p className="text-xl font-semibold text-brand-800">AI Vision · Predictive · LLM Agent</p>
-          <p className="text-neutral-600 mt-2">Terintegrasi dengan ERP, CCTV, IoT</p>
+
+        {/* Kolom Kanan - Gambar (BARU) */}
+        <div className="flex-1">
+          <div className="relative w-full aspect-square max-w-md mx-auto lg:max-w-none">
+            {/* Placeholder gambar - nanti ganti dengan gambar asli */}
+            {/* <div className="w-full h-full bg-gradient-to-br from-brand-100 to-cyan-100 rounded-3xl flex items-center justify-center p-8">
+              <div className="text-center">
+                <FaRobot className="text-6xl text-brand-500 mx-auto mb-4" />
+                <p className="text-brand-700 font-medium">Ilustrasi NeuralForge AI</p>
+                <p className="text-sm text-brand-600 mt-2">Ganti dengan gambar asli di:<br/><code className="text-xs">/public/images/hero-illustration.png</code></p>
+              </div>
+            </div> */}
+            
+            <Image 
+              src="/images/hero-illustration.png" 
+              alt="NeuralForge AI Illustration" 
+              fill
+              className="object-contain"
+              priority
+            />
+           
+          </div>
         </div>
       </div>
     </Container>
