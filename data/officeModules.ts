@@ -1,18 +1,9 @@
-import { IconType } from 'react-icons';
 import { FaFileInvoice, FaMoneyBillWave, FaBoxes, FaChartPie } from 'react-icons/fa';
-
-export interface Module {
-  icon: IconType;
-  title: string;
-  desc: string;
-  flow: string;
-  price: string;
-  color: string;
-}
+import { Module } from './manufacturingModules';
 
 export const officeModules: Module[] = [
   {
-    icon: FaFileInvoice,
+    iconName: "FaFileInvoice",
     title: "AI Document Processor",
     desc: "OCR + 3-way matching PO, Invoice, Packing Slip.",
     flow: "Upload PDF → Ekstraksi data → Match → Auto-posting ERP",
@@ -20,7 +11,7 @@ export const officeModules: Module[] = [
     color: "from-orange-600 to-red-600"
   },
   {
-    icon: FaMoneyBillWave,
+    iconName: "FaMoneyBillWave",
     title: "AI AP Automation",
     desc: "Approval invoice via WhatsApp, deteksi duplikasi.",
     flow: "Email invoice → Klasifikasi GL → Approval via WA",
@@ -28,7 +19,7 @@ export const officeModules: Module[] = [
     color: "from-green-600 to-emerald-600"
   },
   {
-    icon: FaBoxes,
+    iconName: "FaBoxes",
     title: "AI Inventory Assistant",
     desc: "Prediksi stok & auto-reorder PO.",
     flow: "Historis konsumsi → Prediksi kebutuhan → Generate PO otomatis",
@@ -36,7 +27,7 @@ export const officeModules: Module[] = [
     color: "from-yellow-600 to-amber-600"
   },
   {
-    icon: FaChartPie,
+    iconName: "FaChartPie",
     title: "AI Reporting & Analytics",
     desc: "Query bahasa Indonesia: 'tampilkan OEE per shift'",
     flow: "Chat BI → Generate insight → Kirim ke email",

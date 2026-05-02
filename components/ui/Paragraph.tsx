@@ -1,6 +1,13 @@
 import { cn } from '@/lib/utils';
+import { ReactNode } from 'react';
 
-export const Paragraph = ({ children, className, size = 'base' }: { children: React.ReactNode; className?: string; size?: 'sm' | 'base' | 'lg' }) => {
+interface ParagraphProps {
+  children: ReactNode;
+  className?: string;
+  size?: 'sm' | 'base' | 'lg';
+}
+
+export const Paragraph = ({ children, className, size = 'base' }: ParagraphProps) => {
   const sizes = {
     sm: 'text-sm',
     base: 'text-base',

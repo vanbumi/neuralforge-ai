@@ -1,6 +1,13 @@
 import { cn } from '@/lib/utils';
+import { ReactNode } from 'react';
 
-export const Card = ({ children, className, hover = true }: { children: React.ReactNode; className?: string; hover?: boolean }) => {
+interface CardProps {
+  children: ReactNode;
+  className?: string;
+  hover?: boolean;
+}
+
+export const Card = ({ children, className, hover = true }: CardProps) => {
   return (
     <div className={cn(
       'bg-white rounded-2xl border border-neutral-200 p-6 transition-all duration-300',

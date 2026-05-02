@@ -2,8 +2,7 @@ import { manufacturingModules } from '@/data/manufacturingModules';
 import { Container } from '../ui/Container';
 import { Heading } from '../ui/Heading';
 import { Paragraph } from '../ui/Paragraph';
-import { Card } from '../ui/Card';
-import { FaArrowRight } from 'react-icons/fa';
+import { ModuleCard } from '../cards/ModuleCard';
 
 export const ManufacturingModules = () => (
   <section id="manufaktur" className="py-20 bg-white">
@@ -15,27 +14,9 @@ export const ManufacturingModules = () => (
         </Paragraph>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {manufacturingModules.map((module, idx) => {
-          const IconComponent = module.icon;
-          return (
-            <Card key={idx} className="flex flex-col">
-              <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${module.color} flex items-center justify-center mb-4`}>
-                <IconComponent className="text-2xl text-white" />
-              </div>
-              <Heading level={3} className="mb-2">{module.title}</Heading>
-              <Paragraph className="mb-4 flex-1">{module.desc}</Paragraph>
-              <div className="bg-neutral-100 rounded-xl p-3 text-sm font-mono text-neutral-800 mb-4">
-                <span className="font-semibold">📊 Alur:</span> {module.flow}
-              </div>
-              <div className="flex justify-between items-center mt-auto">
-                <span className="text-2xl font-bold text-brand-600">{module.price}</span>
-                <a href="#contact" className="text-brand-600 font-semibold hover:text-brand-700 transition flex items-center gap-1">
-                  Pilih <FaArrowRight className="text-sm" />
-                </a>
-              </div>
-            </Card>
-          );
-        })}
+        {manufacturingModules.map((module, idx) => (
+          <ModuleCard key={idx} module={module} index={idx} />
+        ))}
       </div>
     </Container>
   </section>
