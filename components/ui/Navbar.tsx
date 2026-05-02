@@ -9,6 +9,7 @@ const navLinks = [
   { name: "Back Office", href: "#backoffice" },
   { name: "Testimoni", href: "#testimoni" },
   { name: "Harga", href: "#price" },
+  { name: "Dokumentasi", href: "/docs" },  // ← Tambahkan ini
 ];
 
 export const Navbar = () => {
