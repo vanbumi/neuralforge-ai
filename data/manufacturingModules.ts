@@ -1,5 +1,8 @@
+import { IconType } from 'react-icons';
+import { FaChartLine, FaEye, FaHardHat, FaRobot } from 'react-icons/fa';
+
 export interface Module {
-  iconName: string;
+  icon: IconType;
   title: string;
   desc: string;
   flow: string;
@@ -9,7 +12,7 @@ export interface Module {
 
 export const manufacturingModules: Module[] = [
   {
-    iconName: "FaChartLine",
+    icon: FaChartLine,
     title: "Predictive Maintenance",
     desc: "Deteksi anomali getaran & suhu, prediksi kerusakan 48 jam sebelum downtime.",
     flow: "Sensor IoT → Anomali ML → Alert WA/Email → Work order otomatis",
@@ -17,7 +20,7 @@ export const manufacturingModules: Module[] = [
     color: "from-cyan-600 to-teal-600"
   },
   {
-    iconName: "FaEye",
+    icon: FaEye,
     title: "AI Quality Control",
     desc: "Computer vision deteksi micro-cacat produk, sortir real-time.",
     flow: "Kamera conveyor → YOLOv8 → Deteksi cacat → Dashboard reject rate",
@@ -25,7 +28,7 @@ export const manufacturingModules: Module[] = [
     color: "from-blue-600 to-indigo-600"
   },
   {
-    iconName: "FaHardHat",
+    icon: FaHardHat,
     title: "AI Safety Supervisor",
     desc: "Deteksi APD & pelanggaran area berbahaya via CCTV eksisting.",
     flow: "CCTV → Pose estimation → Alert realtime ke HSE",
@@ -33,7 +36,7 @@ export const manufacturingModules: Module[] = [
     color: "from-emerald-600 to-green-600"
   },
   {
-    iconName: "FaRobot",
+    icon: FaRobot,
     title: "Operational Co-pilot",
     desc: "Analisa OEE, stop reason, rekomendasi prioritas maintenance.",
     flow: "Integrasi PLC/SCADA → Analisa downtime → Dashboard realtime",

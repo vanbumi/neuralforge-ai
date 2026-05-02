@@ -1,17 +1,46 @@
-export const FAQ = () => (
-  <section className="py-20 px-4 bg-slate-50">
-    <div className="max-w-3xl mx-auto text-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">❓ Pertanyaan Umum</h2>
-      <div className="space-y-4 text-left">
-        <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-          <strong className="text-slate-900">Apakah data pabrik kami aman?</strong>
-          <p className="mt-2 text-slate-700">100% aman. Kami support on-premise deployment, data tidak keluar server Anda.</p>
+"use client";
+import { useState } from 'react';
+import { Container } from '../ui/Container';
+import { Heading } from '../ui/Heading';
+import { Paragraph } from '../ui/Paragraph';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+
+const faqs = [
+  { q: "Apakah data pabrik kami aman?", a: "100% aman. Kami support on-premise deployment, data tidak keluar server Anda. Untuk cloud, kami enkripsi penuh dan tidak pernah menyimpan data klien." },
+  { q: "Bisakah integrasi dengan ERP/software existing?", a: "Ya. NeuralForge menyediakan API dan connector ke SAP, Odoo, Accurate, Excel, Google Sheets, dan database SQL." },
+  { q: "Berapa lama implementasi?", a: "Rata-rata 14-21 hari untuk 1 modul, termasuk training tim. Untuk full suite 8 modul sekitar 6-8 minggu." },
+  { q: "Apakah ada trial gratis?", a: "Ya! Kami memberikan demo gratis + POC dengan data riil Anda selama 14 hari. Tidak ada komitmen." }
+];
+
+export const FAQ = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  return (
+    <section className="py-20 bg-neutral-50">
+      <Container>
+        <div className="text-center mb-12">
+          <Heading level={2}>❓ Pertanyaan Umum</Heading>
+          <Paragraph className="mt-2">Yang sering ditanyakan klien kami</Paragraph>
         </div>
-        <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-          <strong className="text-slate-900">Bisakah integrasi dengan ERP/software existing?</strong>
-          <p className="mt-2 text-slate-700">Ya. NeuralForge menyediakan API dan connector ke SAP, Odoo, Accurate, Excel, Google Sheets, dan database SQL.</p>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqs.map((faq, idx) => (
+            <div key={idx} className="bg-white rounded-xl border border-neutral-200 overflow-hidden">
+              <button
+                className="w-full p-5 text-left flex justify-between items-center hover:bg-neutral-50 transition"
+                onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}
+              >
+                <span className="font-semibold text-neutral-800">{faq.q}</span>
+                {activeIndex === idx ? <FaChevronUp className="text-brand-500" /> : <FaChevronDown className="text-neutral-500" />}
+              </button>
+              {activeIndex === idx && (
+                <div className="px-5 pb-5 text-neutral-600 border-t border-neutral-100">
+                  {faq.a}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-      </div>
-    </div>
-  </section>
-);
+      </Container>
+    </section>
+  );
+};

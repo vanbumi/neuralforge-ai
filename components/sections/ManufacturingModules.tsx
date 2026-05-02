@@ -1,18 +1,42 @@
 import { manufacturingModules } from '@/data/manufacturingModules';
-import { ModuleCard } from '../cards/ModuleCard';
+import { Container } from '../ui/Container';
+import { Heading } from '../ui/Heading';
+import { Paragraph } from '../ui/Paragraph';
+import { Card } from '../ui/Card';
+import { FaArrowRight } from 'react-icons/fa';
 
 export const ManufacturingModules = () => (
-  <section id="manufaktur" className="py-20 px-4 bg-white">
-    <div className="max-w-7xl mx-auto">
+  <section id="manufaktur" className="py-20 bg-white">
+    <Container>
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">🏭 4 Modul AI untuk Pabrik</h2>
-        <p className="text-slate-800 max-w-2xl mx-auto">Tingkatkan OEE, kurangi defect, patroli safety otomatis</p>
+        <Heading level={2}>🏭 4 Modul AI untuk Pabrik</Heading>
+        <Paragraph className="max-w-2xl mx-auto mt-2">
+          Tingkatkan OEE, kurangi defect, patroli safety otomatis
+        </Paragraph>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {manufacturingModules.map((module, idx) => (
-          <ModuleCard key={idx} module={module} index={idx} />
-        ))}
+        {manufacturingModules.map((module, idx) => {
+          const IconComponent = module.icon;
+          return (
+            <Card key={idx} className="flex flex-col">
+              <div className={`w-14 h-14 rounded-xl bg-gradient-to-r ${module.color} flex items-center justify-center mb-4`}>
+                <IconComponent className="text-2xl text-white" />
+              </div>
+              <Heading level={3} className="mb-2">{module.title}</Heading>
+              <Paragraph className="mb-4 flex-1">{module.desc}</Paragraph>
+              <div className="bg-neutral-100 rounded-xl p-3 text-sm font-mono text-neutral-800 mb-4">
+                <span className="font-semibold">📊 Alur:</span> {module.flow}
+              </div>
+              <div className="flex justify-between items-center mt-auto">
+                <span className="text-2xl font-bold text-brand-600">{module.price}</span>
+                <a href="#contact" className="text-brand-600 font-semibold hover:text-brand-700 transition flex items-center gap-1">
+                  Pilih <FaArrowRight className="text-sm" />
+                </a>
+              </div>
+            </Card>
+          );
+        })}
       </div>
-    </div>
+    </Container>
   </section>
 );

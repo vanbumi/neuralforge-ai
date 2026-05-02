@@ -1,21 +1,34 @@
+import { Container } from '../ui/Container';
+import { Heading } from '../ui/Heading';
+import { Paragraph } from '../ui/Paragraph';  // ← Tambahkan ini
+import { Card } from '../ui/Card';
+import { FaQuoteLeft } from 'react-icons/fa';
+
+const testimonials = [
+  { name: "PT. Cipta Metal", role: "Plant Manager", text: "Predictive maintenance mengurangi downtime 64 jam per bulan. ROI dalam 3 bulan!" },
+  { name: "FoodPack Indonesia", role: "Finance Controller", text: "Verifikasi invoice 3-way dari 2 hari jadi 15 menit. Staff finance senang." },
+  { name: "Plant Cikarang", role: "Operation Director", text: "Dashboard OEE realtime membantu kami naikkan produktivitas 21%." }
+];
+
 export const Testimonials = () => (
-  <section id="testimoni" className="py-20 px-4 bg-amber-50">
-    <div className="max-w-7xl mx-auto text-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">Apa Kata Klien</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow-md">
-          <p className="text-slate-800">&quot;Predictive maintenance mengurangi downtime 64 jam per bulan. ROI dalam 3 bulan!"</p>
-          <h4 className="font-bold text-slate-900 mt-4">— PT. Cipta Metal</h4>
-        </div>
-        <div className="bg-white p-6 rounded-xl shadow-md">
-          <p className="text-slate-800">&quot;Verifikasi invoice 3-way dari 2 hari jadi 15 menit. Staff finance senang."</p>
-          <h4 className="font-bold text-slate-900 mt-4">— FoodPack Indonesia</h4>
-        </div>
-        <div className="bg-white p-6 rounded-xl shadow-md">
-          <p className="text-slate-800">&quot;Dashboard OEE realtime membantu kami naikkan produktivitas 21%."</p>
-          <h4 className="font-bold text-slate-900 mt-4">— Plant Cikarang</h4>
-        </div>
+  <section id="testimoni" className="py-20 bg-gradient-to-r from-amber-50 to-orange-50">
+    <Container>
+      <div className="text-center mb-12">
+        <Heading level={2}>Apa Kata Klien Kami</Heading>
+        <Paragraph className="mt-2">Dipercaya oleh perusahaan manufaktur terkemuka</Paragraph>
       </div>
-    </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {testimonials.map((testi, idx) => (
+          <Card key={idx} className="flex flex-col">
+            <FaQuoteLeft className="text-brand-300 text-3xl mb-4" />
+            <p className="text-neutral-700 italic mb-4 flex-1">"{testi.text}"</p>
+            <div>
+              <h4 className="font-bold text-neutral-900">{testi.name}</h4>
+              <p className="text-sm text-neutral-500">{testi.role}</p>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Container>
   </section>
 );

@@ -1,28 +1,24 @@
-import { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
 interface ButtonProps {
-  children: ReactNode;
+  children: React.ReactNode;
   variant?: 'primary' | 'outline';
   href?: string;
   onClick?: () => void;
   className?: string;
-  icon?: ReactNode;
 }
 
-export const Button = ({ children, variant = 'primary', href, onClick, className = '', icon }: ButtonProps) => {
-  const baseStyle = "px-6 py-3 rounded-full font-semibold transition flex items-center gap-2";
+export const Button = ({ children, variant = 'primary', href, onClick, className }: ButtonProps) => {
   const variants = {
-    primary: "bg-teal-600 text-white hover:bg-teal-700 shadow-md",
-    outline: "border-2 border-slate-300 text-slate-700 hover:border-teal-600 hover:text-teal-600"
+    primary: 'bg-brand-500 text-white hover:bg-brand-600 shadow-md',
+    outline: 'border-2 border-neutral-300 text-neutral-700 hover:border-brand-500 hover:text-brand-600',
   };
   
-  const Component = href ? 'a' : 'button';
-  const props = href ? { href } : { onClick };
+  const baseStyle = 'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-200';
   
-  return (
-    <Component {...props} className={`${baseStyle} ${variants[variant]} ${className}`}>
-      {icon && icon}
-      {children}
-    </Component>
-  );
+  if (href) {
+    return <a href={href} className={cn(baseStyle, variants[variant], className)}>{children}</a>;
+  }
+  
+  return <button onClick={onClick} className={cn(baseStyle, variants[variant], className)}>{children}</button>;
 };

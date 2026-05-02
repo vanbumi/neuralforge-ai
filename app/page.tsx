@@ -12,7 +12,7 @@ import { ContactForm } from '@/components/sections/ContactForm';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+    <main className="min-h-screen">
       <Navbar />
       <Hero />
       <ManufacturingModules />

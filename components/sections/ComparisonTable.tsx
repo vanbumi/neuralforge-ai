@@ -1,31 +1,41 @@
+import { Container } from '../ui/Container';
+import { Heading } from '../ui/Heading';
+import { Paragraph } from '../ui/Paragraph';
+
+const comparisonData = [
+  { proses: "Estimasi RAB / BoQ", manual: "3-5 hari", ai: "15 menit" },
+  { proses: "Verifikasi Invoice (3-way)", manual: "2 hari", ai: "15 menit" },
+  { proses: "Inspeksi kualitas produk", manual: "Akurasi ~75%", ai: "Akurasi 95%+" },
+  { proses: "Laporan harian produksi", manual: "1-2 jam", ai: "Otomatis 5 menit" }
+];
+
 export const ComparisonTable = () => (
-  <section className="py-20 px-4 bg-white">
-    <div className="max-w-4xl mx-auto text-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Sebelum vs Sesudah NeuralForge</h2>
-      <p className="text-slate-700 mb-8">Efisiensi yang terukur</p>
-      <div className="overflow-x-auto shadow rounded-xl">
+  <section className="py-20 bg-white">
+    <Container>
+      <div className="text-center mb-12">
+        <Heading level={2}>Sebelum vs Sesudah NeuralForge</Heading>
+        <Paragraph className="mt-2">Efisiensi yang terukur</Paragraph>
+      </div>
+      <div className="overflow-x-auto rounded-xl border border-neutral-200">
         <table className="w-full border-collapse bg-white">
           <thead>
-            <tr className="bg-slate-100">
-              <th className="p-4 text-left text-slate-800 font-semibold">Proses</th>
-              <th className="p-4 text-left text-slate-800 font-semibold">Manual</th>
-              <th className="p-4 text-left text-teal-800 font-semibold">Dengan AI</th>
+            <tr className="bg-neutral-100">
+              <th className="p-4 text-left text-neutral-800 font-semibold">Proses</th>
+              <th className="p-4 text-left text-neutral-800 font-semibold">Manual</th>
+              <th className="p-4 text-left text-brand-600 font-semibold">Dengan AI</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="border-b border-slate-200">
-              <td className="p-4 text-slate-800">Estimasi RAB</td>
-              <td className="p-4 text-slate-700">3-5 hari</td>
-              <td className="p-4 text-teal-700 font-semibold">15 menit</td>
-            </tr>
-            <tr className="border-b border-slate-200">
-              <td className="p-4 text-slate-800">Verifikasi Invoice</td>
-              <td className="p-4 text-slate-700">2 hari</td>
-              <td className="p-4 text-teal-700 font-semibold">15 menit</td>
-            </tr>
+            {comparisonData.map((row, idx) => (
+              <tr key={idx} className="border-t border-neutral-200">
+                <td className="p-4 text-neutral-800">{row.proses}</td>
+                <td className="p-4 text-neutral-600">{row.manual}</td>
+                <td className="p-4 text-brand-600 font-semibold">{row.ai}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-    </div>
+    </Container>
   </section>
 );
